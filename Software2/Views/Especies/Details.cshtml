@@ -1,0 +1,33 @@
+﻿@model Software2.Models.Especie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-xs-12">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+        <h2>Detalles</h2>
+
+        <div>
+          
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    <div class="col-xs-2"></div>
+
+</div>

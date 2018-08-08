@@ -1,0 +1,213 @@
+﻿@model IEnumerable<Software2.Models.Control>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anamnesis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.temperatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mucosas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tiempo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.piel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.muscolo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ojos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cardiovascular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.respiratorio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.digestivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reproducor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nervioso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.linfatico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_piel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_muscolo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_ojos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_cardiovascular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_respiratorio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_digestivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_genito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_reproducor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_nervioso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_linfatico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anormalidades)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.problemas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ayudas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fianl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anamnesis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.temperatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mucosas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tiempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.piel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.muscolo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ojos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cardiovascular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.respiratorio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.digestivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reproducor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nervioso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.linfatico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_piel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_muscolo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_ojos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_cardiovascular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_respiratorio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_digestivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_genito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_reproducor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_nervioso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_linfatico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anormalidades)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.problemas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ayudas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fianl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

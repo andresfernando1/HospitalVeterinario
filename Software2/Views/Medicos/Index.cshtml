@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Software2.Models.Veterinario>
+
+@{
+    ViewBag.Title = "Médicos";
+}
+
+<h2 class="text-center">Médicos veterinarios</h2>
+
+<a class="btn btn-success btn-sm" href='@Url.Action("Create", "Medicos" )'>
+    <span class="glyphicon glyphicon-plus"></span>
+
+</a>
+Nuevo médico
+
+
+<br />
+<table class="table table-bordered" id="tablaMedicos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

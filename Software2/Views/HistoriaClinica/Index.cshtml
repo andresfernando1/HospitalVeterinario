@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Software2.Models.HistoriaClinica>
+
+@{
+    ViewBag.Title = "Historias Clinicas";
+}
+
+<h2 class="text-center">Historias clinicas</h2>
+
+<br />
+<table class="table table-bordered" id="tablaHistoria">
+    <thead>
+        <tr>
+            <th>
+                Código historia
+            </th>
+            <th>
+                Nombre propietario
+            </th>
+            <th>
+                Nombre mascota
+            </th>
+
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mascota.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mascota.propietarioFK.nombre) @Html.DisplayFor(modelItem => item.mascota.propietarioFK.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mascota.nombre)
+                </td>
+                <td>
+
+                    <a class="btn btn-sm btn btn-info" href="@Url.Action( "Details", new { id=item.id })">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+
+                        Más información
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,86 @@
+﻿@model Software2.Models.Mascota
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="text-center">Información mascota</h2>
+<br />
+<div class="row">
+
+    <div class="col-sm-6">
+        <h3 class="text-center">Datos propietario</h3>
+        <table class="table table-bordered table-striped">
+            <tr style="height:219px">
+                <td class="col-xs-4" align="center">
+                    <img src="~/Images/propietario.png" style="width:50%; height:auto;" />
+                </td>
+
+
+                <td class="col-xs-8">
+                    <h3>@Html.DisplayFor(model => model.propietarioFK.nombre) @Html.DisplayFor(model => model.propietarioFK.apellido)</h3>
+
+                    Cédula: @Html.DisplayFor(model => model.propietarioFK.cedula)
+
+                    <br />
+
+                    Celular: @Html.DisplayFor(model => model.propietarioFK.celular)
+                    <br />
+
+                    Correo: @Html.DisplayFor(model => model.propietarioFK.correo)
+
+
+
+
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <h3 class="text-center">Datos mascota</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td class="col-xs-4" align="center">
+                    <img src="~/Images/LogoMascota.png" style="width:50%; height:auto;" />
+                </td>
+
+
+                <td class="col-xs-8">
+                    <h3>@Html.DisplayFor(model => model.nombre)</h3>
+                    Fecha de nacimiento: @Html.DisplayFor(model => model.fecha_nacimiento)
+                    <br />
+                    Edad: @Html.DisplayFor(model => model.edad)
+
+                    <br />
+
+                    Especie: @Html.DisplayFor(model => model.especie)
+                    <br />
+                    Color: @Html.DisplayFor(model => model.color)
+                    <br />
+                    <a class="btn btn-info btn-sm btn-tumblr" href='@Url.Action("Details","HistoriaClinica", new { id=Model.id }) ' >
+                        Historia clinica
+                    </a>
+                    <a class="btn btn-info btn-sm btn-tumblr" href='@Url.Action("Edit", new { id=Model.id }) ' data-toggle="tooltip" title="Editar mascota">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                  
+                    <a class="btn  btn-sm btn-danger" href='@Url.Action("Delete",new { id=Model.id }) ' data-toggle="tooltip" title="Eliminar mascota">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+<hr />
+
+
+<p>
+    
+
+
+    <a class="btn btn-default btn-sm" href="@Url.Action("Details","Propietarios",new { id = Model.propietarioFK.cedula })">Regresar</a>  
+</p>

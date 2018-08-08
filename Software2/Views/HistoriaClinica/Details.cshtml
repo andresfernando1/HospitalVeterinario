@@ -1,0 +1,136 @@
+﻿@model Software2.Models.HistoriaClinica
+
+@{
+    ViewBag.Title = "Historia clinica";
+}
+<h4><strong>Numero de historia</strong>: @Model.id</h4>
+<h4><strong>Fecha</strong>: @Model.fecha_creacion.ToString("dd MMMM yyyy")</h4>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <td class="col-xs-4" align="center">
+            <img src="~/Images/LogoMascota.png" style="width:50%; height:auto;" />
+        </td>
+
+
+        <td class="col-xs-8">
+            <h3>@Html.DisplayFor(model => model.mascota.nombre) </h3>
+
+            Fecha de nacimiento: @Html.DisplayFor(model => model.mascota.fecha_nacimiento)
+
+            <br />
+            Edad: @Html.DisplayFor(model => model.mascota.edad)
+
+            <br />
+
+             Especie: @Html.DisplayFor(model => model.mascota.especieFK.nombre)
+
+            <br />
+
+            Color : @Html.DisplayFor(model => model.mascota.color)
+           
+            <br />
+            Sexo : @Html.DisplayFor(model => model.mascota.sexo)
+
+
+        </td>
+    </tr>
+
+</table>
+
+
+
+<div class="col-xs-12">
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Vacunación</h3>
+            <a class="btn btn-default btn-xs" style="margin-left:10px" href="@Url.Action("Create","GestionVacunacions",new { id=Model.mascota.id})">Nueva vacunación</a>
+
+           
+                <table class="table table-bordered table-responsive">
+
+                    <tr>
+                        <td>Fecha</td>
+                        <td>Nombre</td>
+                        <td></td>
+                    </tr>
+
+
+                    @foreach (var item in Model.mascota.gestionVacunacion)
+                {
+                        <tr>
+                            <td>@item.fechaVacunacion.ToString("dd MMMM yyyy")</td>
+                            <td>@item.nombre</td>
+                            <td><button class="btn btn-info" onclick="location.href='@Url.Action("Details","GestionVacunacions",new { id=item.vacunaID})'">Más información</button></td>
+                        </tr>
+                    }
+                </table>
+            
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Remisiones</h3>
+            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Nueva remisión</a>
+
+           
+            
+                <table class="table table-bordered table-responsive">
+
+                    <tr>
+                        <td>Fecha</td>
+                        <td>Motivo</td>
+                        <td></td>
+                    </tr>
+
+
+                    @foreach (var item in Model.mascota.remisiones)
+                {
+                        <tr>
+                            <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                            <td>motivo</td>
+                            <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                        </tr>
+                    }
+                </table>
+            
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="seccion">
+            <h3 class="text-center">Controles</h3>
+            <a class="btn btn-default btn-xs" style="margin-left:10px" href="@Url.Action("Create","Control",new { id=Model.id})">Nuevo control</a>
+
+           
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Diagnóstico final</td>
+                    <td></td>
+                </tr>
+                
+
+                @foreach (var item in Model.controles)
+                {
+                    <tr>
+                        <td>@item.fecha.ToString("dd MMMM yyyy")</td>
+                        <td>@item.fianl</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Control",new { id=item.id})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+            
+        </div>
+
+    </div>
+
+
+
+</div>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>

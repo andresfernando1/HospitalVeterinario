@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Software2.Models.Especie>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-xs-4"></div>
+
+<h2 class="text-center">Lista de Especies</h2>
+    
+<br />
+<a class="btn btn-success btn-sm" href='@Url.Action("Create")'>
+    <span class="glyphicon glyphicon-plus"></span>
+
+</a>
+Nueva especie
+
+
+    <table class="table table-striped table-responsive table-bordered" id="tablaEspecies">
+        <thead>
+            <tr>
+                <td>
+                    Nombre especies
+                </td>
+                <td></td>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td style="text-align:center">
+                        <button type="button" class="btn btn-info btn-xs" onclick="window.location ='//localhost:49959/Especies/Edit/' + @Html.DisplayFor(modelItem => item.id)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="window.location ='//localhost:49959/Especies/Details/' + @Html.DisplayFor(modelItem => item.id)">
+                            <span class="glyphicon glyphicon-fullscreen"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" onclick="window.location ='//localhost:49959/Especies/Delete/' + @Html.DisplayFor(modelItem => item.id)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

@@ -1,0 +1,58 @@
+﻿@model Software2.Models.GestionVacunacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GestionVacunacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaVacunacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaVacunacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lote)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vacunaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

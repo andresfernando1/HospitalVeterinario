@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<Software2.Models.Veterinario>
+
+@{
+    ViewBag.Title = "Médicos";
+}
+@{
+    int total = 0;
+}
+
+@{
+    ViewBag.Title = "Mascotas atendidas";
+}
+
+<button id="BtnEnviar" name="BtnEnviar">enviar</button>
+
+<input type="date" class="form-control"/>
+
+<h2 class="text-center">Mascotas atendidas</h2>
+
+<table class="table table-bordered" id="tablaMedicos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                Controles atendidos
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+
+            total += item.mascotasAtendidas;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mascotasAtendidas)
+                </td>
+
+                <td>
+
+                    <button class="btn btn-info">Info</button>
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+@total
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/moment-2.10.3.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+
+
+<script type="text/javascript" id="DateTime1">
+   
+
+    $(function () {
+        $("#BtnEnviar").click(function () {                             
+            alert(document.getElementById("DateTime1").Value);
+            var url = "@Url.Action("MascotasAtendidas","Reportes")";
+            var data = {
+                fechaInicio:"'"+ $("#DateTime1").val() +"'",
+                fechaFin: "fin"
+            }
+            $.post(url, data).done(function (data) {
+                alert(data.fechaInicio);
+
+            }).fail(manejarErrorAjax).always(function () {
+
+            });
+
+
+
+        });
+
+    function manejarErrorAjax(err) {
+        console.log(err.responseText);
+    }
+
+    });
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,90 @@
+﻿@model Software2.Models.Remision
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Remision</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Practicante.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Practicante.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vista)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vista)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diagnostico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diagnostico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ecografia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ecografia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evaluacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evaluacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resultado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resultado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.remisionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

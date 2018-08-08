@@ -1,0 +1,152 @@
+﻿<div class="sidebar" data-color="green" data-image="Images/sidebar-4.jpg">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo">
+        <center>
+            <img src="~/Images/logo-universidad-de-caldas.png" height="160px" width="160px" />
+        </center>
+        @using Microsoft.AspNet.Identity
+
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {@Html.AntiForgeryToken()
+
+   
+    <div class="dropup">
+        <a class="btn  dropdown-toggle btn-xs" data-toggle="dropdown">
+            @User.Identity.GetUserName()
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Editar información</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+
+        </ul>
+    </div>
+}
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav" style="height: 100%">
+            <li>
+                <a href="@Url.Action("Index","Propietarios")">
+
+                    <i class="glyphicon glyphicon-user"></i>
+                    <p>Propietarios</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Practicantes")">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Practicantes</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Medicos")">
+                    <i class="glyphicon glyphicon-eye-open"></i>
+                    <p>Médicos</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","HistoriaClinica")">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <p>Historias clinicas</p>
+                </a>
+            </li>
+            <li>
+
+
+
+
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <i class="glyphicon glyphicon-folder-close">
+                    </i> <p>Autorizaciones</p>
+                </a>
+
+
+
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <ul class="nav">
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_cirugia")">Cirugía</a>
+
+                            </li>
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_Consentimiento")">Consentimiento firmado</a>
+
+                            </li>
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_Eutanasia")">Eutanacia</a>
+
+                            </li>
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_Necropsia")">Necropsia</a>
+
+
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+
+
+
+
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    <i class="glyphicon glyphicon-folder-close">
+                    </i> <p>Reportes</p>
+                </a>
+
+
+
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <ul class="nav">
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_cirugia")">Mascotas atendidas</a>
+
+                            </li>
+                            <li>
+
+                                <a href="@Url.Action("Create","Auto_Consentimiento")">Consentimiento firmado</a>
+
+                            </li>
+                            
+                        </ul>
+
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Razas")">
+                    <i class="material-icons">content_paste</i>
+                    <p>Razas</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Especies")">
+                    <i class="material-icons">library_books</i>
+                    <p>Especies</p>
+                </a>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+</div>

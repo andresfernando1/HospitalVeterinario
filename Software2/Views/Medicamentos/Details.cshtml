@@ -1,0 +1,66 @@
+﻿@model Software2.Models.Medicamento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medicamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.viaSuministro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.viaSuministro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frecuencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frecuencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.medicamentoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

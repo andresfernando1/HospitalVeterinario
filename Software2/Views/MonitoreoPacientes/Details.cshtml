@@ -1,0 +1,90 @@
+﻿@model Software2.Models.MonitoreoPacientes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MonitoreoPacientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.monitoreo.historia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monitoreo.historia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.temperatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temperatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pulso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pulso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peritaltismo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peritaltismo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mucosas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mucosas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

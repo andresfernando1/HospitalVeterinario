@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Software2.Models.Remision>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="nav-align-center">    
+    <h3><strong>Hospital veterinario Diego Villegas Toro</strong></h3>
+    <h4><strong>Universidad de caldas</strong></h4>
+    <h4><strong>Remision del paciente</strong></h4>
+</div>
+
+
+@{
+    if (ViewBag.mascota.remisiones.Count == 0)
+    {
+        <h3 class="text-danger">La mascota no tiene ninguna remision</h3>
+    }
+}
+
+<div class="col-xs-9">
+    <h3 class="text-center">Mascota</h3>
+    <hr />
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.nombre)
+        </dt>
+
+        <dd>
+            @ViewBag.mascota.nombre
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.raza)
+        </dt>
+        <dd>
+
+            @ViewBag.mascota.razaFK.nombre
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.color)
+        </dt>
+        <dd>
+            @ViewBag.mascota.color
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.edad)
+        </dt>
+        <dd>
+            @ViewBag.mascota.edad
+        </dd>
+
+    </dl>
+</div>
+
+
+
+<a href="@Url.Action("Create", "Remisiones",new { id = ViewBag.mascota.id})" class="option-item text-info">
+    <i class="fa fa-4x fa-plus-circle"></i>
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mascota.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Practicante.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diagnostico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ecografia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.evaluacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resultado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mascota.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Practicante.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vista)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diagnostico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ecografia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.evaluacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resultado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.remisionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.remisionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.remisionID })
+        </td>
+    </tr>
+}
+
+</table>

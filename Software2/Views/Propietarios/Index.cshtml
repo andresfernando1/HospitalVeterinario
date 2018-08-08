@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Software2.Models.Propietario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <h2 class="text-center">Lista de propietarios</h2>
+
+<a class="btn btn-success btn-sm" href='@Url.Action("Create", "Propietarios" )'><span class="glyphicon glyphicon-plus" ></span>
+   
+</a>
+Nuevo propietario
+   
+
+<br />
+<table class="table table-striped table-bordered table-responsive" id="tablaPropietarios">
+    <thead>
+        <tr>
+            <th>
+                Cédula
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                Opciones
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+
+
+                    <a class="btn btn-tumblr btn-sm" href='@Url.Action("Edit", "Propietarios",new { id=item.cedula }) ' data-toggle="tooltip" title="editar propietario" data-inverted="">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+
+                    <a class="btn btn-info btn-sm" href='@Url.Action("Details", "Propietarios",new { id=item.cedula }) ' data-toggle="tooltip" title="Detalles de propietario">
+                        <span class="glyphicon glyphicon-fullscreen"></span>
+                    </a>
+                    <a class="btn btn-danger btn-sm " href='@Url.Action("Delete", "Propietarios",new { id=item.cedula }) ' data-toggle="tooltip" title="Eliminar propietario">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+
+
+                    <a class="btn btn-success btn-sm" href="@Url.Action("Create", "Mascotas",new { id=item.cedula })">
+                        Agregar Mascota
+                    </a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

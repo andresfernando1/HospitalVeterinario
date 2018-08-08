@@ -1,0 +1,66 @@
+﻿@model Software2.Models.SolicitudExamen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SolicitudExamen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mascotaFK.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mascotaFK.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.practicanteFK.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.practicanteFK.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numeroRecibo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numeroRecibo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.muestraRemitida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.muestraRemitida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.examenSolicitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.examenSolicitado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diagnosticoPresuntivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diagnosticoPresuntivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

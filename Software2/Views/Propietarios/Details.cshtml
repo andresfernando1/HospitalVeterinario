@@ -1,0 +1,90 @@
+﻿@model Software2.Models.Propietario
+
+@{
+    ViewBag.Title = "Detalles propietario";
+}
+
+<h2 class="text-center">Detalles propietario</h2>
+<br />
+
+    
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td class="col-xs-4" align="center">
+                <img  src="~/Images/propietario.png"  style="width:50%; height:auto;" />
+                </td>   
+
+                
+            <td class="col-xs-8">
+                <h3>@Html.DisplayFor(model => model.nombre) @Html.DisplayFor(model => model.apellido)</h3>
+
+                    Cédula: @Html.DisplayFor(model => model.cedula)
+
+                    <br />
+                
+                    Celular: @Html.DisplayFor(model => model.celular)
+                <br />             
+                
+                    Correo: @Html.DisplayFor(model => model.correo)
+
+                
+                    
+
+            </td>
+        </tr>
+        
+    </table>
+
+    <h3 class="text-center">Mascotas</h3>
+    <table class="table table-bordered table-striped">
+       
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+               Especie
+            </th>
+            <th>
+                Edad (años)
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model.mascotas) { 
+          
+
+            <tr>
+                <td>
+                    @item.nombre
+                </td>
+              
+                <td>
+                    @item.especieFK.nombre
+                </td>
+                <td>
+                    @item.edad
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" href='@Url.Action("Details", "Mascotas",new { id = item.id}) '>
+                        <span class="glyphicon glyphicon-info-sign"></span> Datos mascota
+                    </a>
+                </td>
+            </tr>
+
+            }
+
+        </table>
+
+<p>
+
+    <a class="btn btn-warning btn-sm" href='@Url.Action("Edit", "Propietarios",new { id = Model.cedula}) ' data-toggle="tooltip" title="editar propietario" data-inverted="">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </a>
+
+    <a class="btn btn-sm" href='@Url.Action("Index", "Propietarios") ' data-toggle="tooltip" title="editar propietario" data-inverted="">
+        Regresar
+    </a>
+
+</p>

@@ -1,0 +1,42 @@
+﻿@model Software2.Models.Auto_Necropsia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Auto_Necropsia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.historiaFK.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.historiaFK.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

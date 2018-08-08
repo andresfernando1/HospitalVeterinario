@@ -1,0 +1,106 @@
+﻿@model Software2.Models.GestionVacunacion
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Agregar Vacuna @ViewBag.fechaActual</h2>
+
+<div class="row">
+    <div class="col-xs-6">
+        <h3 class="text-center">Mascota</h3>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mascota.nombre)
+            </dt>
+
+            <dd>
+                @ViewBag.mascota.nombre
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Mascota.especie)
+            </dt>
+            <dd>
+
+                @ViewBag.mascota.especieFK.nombre
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mascota.color)
+            </dt>
+            <dd>
+                @ViewBag.mascota.color
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mascota.edad)
+            </dt>
+            <dd>
+                @ViewBag.mascota.edad
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaVacunacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaVacunacion,"{0:yyyy-MM-dd}", new { htmlAttributes = new {@type = "date", @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.fechaVacunacion, "", new { @class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dosis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dosis, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dosis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lote, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lote, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lote, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="mascotaID" id="mascotaID" value="@ViewBag.mascota.id" />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

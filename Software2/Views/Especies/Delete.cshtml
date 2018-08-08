@@ -1,0 +1,38 @@
+﻿@model Software2.Models.Especie
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="col-xs-12">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <h2>ELIMINAR ESPECIE</h2>
+
+    <h3>¿Estás seguro de eliminar?</h3>
+        <div>
+            
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-xs-3"></div>
+</div>
