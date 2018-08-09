@@ -23,12 +23,32 @@ namespace Software2.Controllers
             return View(db.Veterinarios.Where(xx=>xx.role=="Practicante"));
         }
 
-    
 
-      
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Veterinario veterinario = db.Veterinarios.Find(id);
+            if (veterinario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(veterinario);
+        }
 
-  
-    
+        // POST: Propietarios/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            Veterinario veterinario = db.Veterinarios.Find(id);
+            db.Veterinarios.Remove(veterinario);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

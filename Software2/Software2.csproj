@@ -695,6 +695,7 @@
     <Content Include="Views\Medicos\Create.cshtml" />
     <Content Include="Views\Medicos\Index.cshtml" />
     <Content Include="Views\Reportes\MascotasAtendidas.cshtml" />
+    <Content Include="Views\Practicantes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

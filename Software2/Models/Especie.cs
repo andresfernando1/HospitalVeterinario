@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,5 +20,5 @@ namespace Software2.Models
 
         public List<Mascota> mascotas;
        
-    }  
+    }     
 }

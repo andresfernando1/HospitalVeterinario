@@ -41,17 +41,17 @@
              
 
         <td>
-            @*<a href="@Url.Action("Details", "Practicantes", new { id= item.practicanteID} )" class="option-item text-success">
+            <a href="@Url.Action("Details", "Practicantes", new { id= item.ID} )" class="option-item text-success">
                 <i class="fa fa-2x fa-info-circle"></i>
             </a>
 
-            <a href="@Url.Action("Edit", "Practicantes", new { id= item.practicanteID} )" class="option-item text-info">
+            <a href="@Url.Action("Edit", "Practicantes", new { id= item.ID} )" class="option-item text-info">
                 <i class="fa fa-2x fa-edit"></i>
             </a>
 
-            <a href="@Url.Action("Delete", "Practicantes", new { id= item.practicanteID} )" class="option-item text-danger">
+            <a href="@Url.Action("Delete", "Practicantes", new { id= item.ID} )" class="option-item text-danger">
                 <i class="fa fa-2x fa-close"></i>
-            </a>*@
+            </a>
         </td>
         
     </tr>
