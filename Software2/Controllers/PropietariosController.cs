@@ -28,7 +28,10 @@ namespace Software2.Controllers //Carlos Mario Jaramillo
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Propietario propietario = db.Propietarios.Find(id);
+            Propietario propietario = db.Propietarios.Include(xx=>xx.mascotas).FirstOrDefault(t=>t.cedula==id);
+
+         
+           
             if (propietario == null)
             {
                 return HttpNotFound();

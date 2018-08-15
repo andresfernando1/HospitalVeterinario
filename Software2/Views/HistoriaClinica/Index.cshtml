@@ -7,11 +7,14 @@
 <h2 class="text-center">Historias clinicas</h2>
 
 <br />
-<table class="table table-bordered" id="tablaHistoria">
+<table class="table table-bordered table-striped" id="tablaHistoria">
     <thead>
         <tr>
             <th>
                 Código historia
+            </th>
+            <th>
+                Cédula propietario
             </th>
             <th>
                 Nombre propietario
@@ -27,26 +30,30 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mascota.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mascota.propietarioFK.nombre) @Html.DisplayFor(modelItem => item.mascota.propietarioFK.apellido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mascota.nombre)
-                </td>
-                <td>
+        <tr>
 
-                    <a class="btn btn-sm btn btn-info" href="@Url.Action( "Details", new { id=item.id })">
-                        <span class="glyphicon glyphicon-info-sign"></span>
+            <td>
+                @Html.DisplayFor(modelItem => item.mascota.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mascota.propietarioFK.cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mascota.propietarioFK.nombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mascota.nombre)
+            </td>
+            <td>
 
-                        Más información
-                    </a>
+                <a class="btn btn-sm btn btn-info" href="@Url.Action( "Details", new { id=item.id })">
+                    <span class="glyphicon glyphicon-info-sign"></span>
 
-                </td>
-            </tr>
+                    Más información
+                </a>
+
+            </td>
+        </tr>
         }
     </tbody>
 

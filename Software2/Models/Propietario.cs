@@ -18,9 +18,21 @@ namespace Software2.Models //Carlos Mario Jaramillo
         [Required(ErrorMessage ="El campo Nombre es obligatorio")]
         public string nombre { get; set; }
 
+        
+
         [Display(Name = "Apellido")]
         [Required(ErrorMessage = "El campo Apellido es obligatorio")]
         public string apellido { get; set; }
+
+        [Display(Name = "Nombre")]
+
+        public string nombreCompleto
+        {
+            get
+            { 
+                return nombre + " "+apellido;
+            }
+        }
 
         [Display(Name ="Celular")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "El número de celular no puede tener letras símbolos")]
@@ -31,7 +43,7 @@ namespace Software2.Models //Carlos Mario Jaramillo
         [DataType(DataType.EmailAddress)]
         public string correo { get; set; }
 
-        public virtual List<Mascota> mascotas { get; set; }
+        public List<Mascota> mascotas { get; set; }
 
 
         

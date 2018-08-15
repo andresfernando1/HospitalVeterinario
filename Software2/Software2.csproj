@@ -218,35 +218,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Metodos.cs" />
-    <Compile Include="Migrations\201802051409047_mdhtdh.cs" />
-    <Compile Include="Migrations\201802051409047_mdhtdh.Designer.cs">
-      <DependentUpon>201802051409047_mdhtdh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120159282_mg1ds.cs" />
-    <Compile Include="Migrations\201804120159282_mg1ds.Designer.cs">
-      <DependentUpon>201804120159282_mg1ds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120337406_mdbsj.cs" />
-    <Compile Include="Migrations\201804120337406_mdbsj.Designer.cs">
-      <DependentUpon>201804120337406_mdbsj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120340327_mgVeterinario.cs" />
-    <Compile Include="Migrations\201804120340327_mgVeterinario.Designer.cs">
-      <DependentUpon>201804120340327_mgVeterinario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120349023_mg14r3dd.cs" />
-    <Compile Include="Migrations\201804120349023_mg14r3dd.Designer.cs">
-      <DependentUpon>201804120349023_mg14r3dd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120352344_scacuja.cs" />
-    <Compile Include="Migrations\201804120352344_scacuja.Designer.cs">
-      <DependentUpon>201804120352344_scacuja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120411431_mcashcvjf.cs" />
-    <Compile Include="Migrations\201804120411431_mcashcvjf.Designer.cs">
-      <DependentUpon>201804120411431_mcashcvjf.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Autorizacion.cs" />
     <Compile Include="Models\Auto_Cirugia.cs" />
@@ -262,6 +233,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Mascota.cs" />
+    <Compile Include="Models\MascotaView.cs" />
     <Compile Include="Models\Medicamento.cs" />
     <Compile Include="Models\Monitoreo.cs" />
     <Compile Include="Models\MonitoreoPacientes.cs" />
@@ -702,29 +674,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802051409047_mdhtdh.resx">
-      <DependentUpon>201802051409047_mdhtdh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120159282_mg1ds.resx">
-      <DependentUpon>201804120159282_mg1ds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120337406_mdbsj.resx">
-      <DependentUpon>201804120337406_mdbsj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120340327_mgVeterinario.resx">
-      <DependentUpon>201804120340327_mgVeterinario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120349023_mg14r3dd.resx">
-      <DependentUpon>201804120349023_mg14r3dd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120352344_scacuja.resx">
-      <DependentUpon>201804120352344_scacuja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120411431_mcashcvjf.resx">
-      <DependentUpon>201804120411431_mcashcvjf.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

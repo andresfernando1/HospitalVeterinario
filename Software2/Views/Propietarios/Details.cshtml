@@ -43,35 +43,42 @@
                 Nombre
             </th>
             <th>
-               Especie
+                Especie
             </th>
             <th>
-                Edad (años)
+                Raza
             </th>
             <th>
+                Edad
+            </th>
+            <th>
+                Opción
             </th>
         </tr>
 
         @foreach (var item in Model.mascotas) { 
           
 
-            <tr>
-                <td>
-                    @item.nombre
-                </td>
-              
-                <td>
-                    @item.especieFK.nombre
-                </td>
-                <td>
-                    @item.edad
-                </td>
-                <td>
-                    <a class="btn btn-info btn-sm" href='@Url.Action("Details", "Mascotas",new { id = item.id}) '>
-                        <span class="glyphicon glyphicon-info-sign"></span> Datos mascota
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @item.nombre
+            </td>
+
+            <td>
+                @item.raza.nombre
+            </td>
+            <td>
+               @item.raza.especie.nombre
+            </td>
+            <td>
+                @item.edad
+            </td>
+            <td>
+                <a class="btn btn-info btn-sm" href='@Url.Action("Details", "Mascotas",new { id = item.id}) '>
+                    <span class="glyphicon glyphicon-info-sign"></span> Datos mascota
+                </a>
+            </td>
+        </tr>
 
             }
 

@@ -24,12 +24,15 @@
 
             <br />
 
-             Especie: @Html.DisplayFor(model => model.mascota.especieFK.nombre)
+            Especie: @Html.DisplayFor(model => model.mascota.raza.especie.nombre)
+
+            <br />
+            Raza: @Html.DisplayFor(model => model.mascota.raza.nombre)
 
             <br />
 
             Color : @Html.DisplayFor(model => model.mascota.color)
-           
+
             <br />
             Sexo : @Html.DisplayFor(model => model.mascota.sexo)
 

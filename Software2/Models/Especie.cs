@@ -18,7 +18,7 @@ namespace Software2.Models
 
         public virtual List<Raza> razas { get; set; }
 
-        public List<Mascota> mascotas;
+        
        
     }     
 }

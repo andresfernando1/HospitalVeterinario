@@ -12,12 +12,14 @@ namespace Software2.Models
         [Key]
         public string id { get; set; }
 
-        [Display(Name ="Nombre")]
-        [Required(ErrorMessage ="El campo Nombre es obligatorio")]
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public string nombre { get; set; }
 
         [Display(Name = "Fecha de nacimiento")]
-       
+
+        string fecha = "01/02/1999";
+
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "El campo Fecha de nacimiento es obligatorio")]
         public DateTime fecha_nacimiento { get; set; }
@@ -32,9 +34,9 @@ namespace Software2.Models
         //[ForeignKey("razaFK")]
         //public int raza { get; set; }
 
-        [Display(Name = "Especie")]
-        [ForeignKey("especieFK")]
-        public int especie { get; set; }
+        [Display(Name = "Raza")]
+        [ForeignKey("raza")]
+        public int razaFK { get; set; }
 
         [Display(Name = "Propietario")]
         [ForeignKey("propietarioFK")]
@@ -42,10 +44,7 @@ namespace Software2.Models
 
         public virtual Propietario propietarioFK { get; set; }
 
-    
-
-        //public virtual Raza razaFK { get; set; }
-        public virtual Especie especieFK { get; set; }
+        public virtual Raza raza { get; set; }
 
         public enum sexos { Hembra,Macho};
 
@@ -58,8 +57,15 @@ namespace Software2.Models
         public virtual ICollection<Remision> remisiones { get; set; } 
 
         [Display(Name = "Edad")]
-        public int edad { get {
-                return DateTime.Today.AddTicks(-this.fecha_nacimiento.Ticks).Year - 1;
+        public String edad { get {
+                int anos= DateTime.Today.AddTicks(-this.fecha_nacimiento.Ticks).Year - 1;
+                if (anos < 1)
+                {
+                    DateTime nacimiento = this.fecha_nacimiento;
+                    DateTime hoy = DateTime.Now;
+                    return (hoy.Month - nacimiento.Month).ToString() + " Meses";
+                        }
+                return anos.ToString()+" Años";
             } }
 
 

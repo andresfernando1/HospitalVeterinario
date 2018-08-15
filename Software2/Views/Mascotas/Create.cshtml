@@ -1,4 +1,4 @@
-﻿@model Software2.Models.Mascota
+﻿@model Software2.Models.MascotaView
 
 @{
     ViewBag.Title = "Agregar mascota";
@@ -7,71 +7,77 @@
 <h2 class="text-center">Agregar nueva mascota</h2>
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 
         <div class="form-group">
-
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.fecha_nacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.fecha_nacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.fecha_nacimiento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.sexo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.sexo, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.color, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.especie, "raza", htmlAttributes: new { @class = "control-label col-md-2" })
-                @*<div class="col-md-10">
-                        @Html.DropDownList("raza", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.especie, "", new { @class = "text-danger" })
-                    </div>*@
-                <div class="col-md-10">
-                    @Html.DropDownList("especie", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.especie, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Crear" class="btn btn-default" />
-                </div>
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
             </div>
         </div>
 
-    }
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha_nacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecha_nacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fecha_nacimiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.sexo, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.color, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.especieId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DropDownList("especie", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.especieId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.razaFK, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DropDownList("razaFK", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.razaFK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
 
 <div>
     <a class="btn btn-default" href="@Url.Action("Details","Propietarios",new {id= @ViewBag.propietario})">Regresar al propietario</a>
@@ -79,4 +85,30 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#especie").change(function () {
+                $("#raza").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetRazas")',
+                    dataType: 'json',
+                    data: { especieId: $("#especie").val() },
+                    success: function (razas) {
+                        $.each(razas, function (i, raza) {
+                            $("#raza").append('<option value="'
+                                + raza.id + '">'
+                                + raza.nombre + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve razas.' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
 }

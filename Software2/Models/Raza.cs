@@ -9,6 +9,8 @@ namespace Software2.Models
 {
     public class Raza   
     {
+
+        [Key]
         public int id { set; get; }
 
         [StringLength(30)]
@@ -18,8 +20,8 @@ namespace Software2.Models
 
         public int idEspecie { get; set; }
         [ForeignKey("idEspecie")]
-        public Especie especie { set; get; }
+        public virtual Especie especie { set; get; }
 
-       
+        public List<Mascota> mascotas;
     }
 }

@@ -44,6 +44,8 @@ namespace Software2.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Veterinario veterinario = db.Veterinarios.Find(id);
+            var user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.Veterinarios.Remove(veterinario);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Software2.Models;
 
+
+
 namespace Software2.Controllers
 {
     [Authorize]
@@ -18,7 +20,7 @@ namespace Software2.Controllers
         // GET: Mascotas
         public ActionResult Index()
         {
-            var mascotas = db.Mascotas.Include(m => m.historia).Include(m => m.propietarioFK).Include(m => m.especieFK);
+            var mascotas = db.Mascotas.Include(m => m.historia).Include(m => m.propietarioFK).Include(m => m.raza);
             return View(mascotas.ToList());
         }
 
@@ -43,7 +45,7 @@ namespace Software2.Controllers
 
             ViewBag.propietario = id;
             ViewBag.especie = new SelectList(db.Especies, "id", "nombre");
-            ViewBag.raza = new SelectList(db.Razas, "id", "nombre");
+            ViewBag.razaFK = new SelectList(db.Razas, "id", "nombre");
             return View();
         }
 
@@ -58,25 +60,32 @@ namespace Software2.Controllers
             {
                 mascota.propietario = Convert.ToInt64(mascota.id);
                 mascota.id = Metodos.generarCodigo();
-                if (mascota.fecha_nacimiento > DateTime.Now) //Esto no funciona pero hay que arreglarlo
+                if (mascota.fecha_nacimiento > DateTime.Now) 
                 {
-                    ModelState.AddModelError("Lafecha de nacimiento no es valida", "");
-                    return RedirectToAction("Index");
-                }
-                var historia = new HistoriaClinica();
-                historia.id = mascota.id;
-                historia.fecha_creacion = DateTime.Now.Date;
-                db.HistoriaClinicas.Add(historia);
+                    ModelState.AddModelError("", "La fecha de nacimiento no puede ser mayor a la fecha actual");
 
-                db.Mascotas.Add(mascota);
-                db.SaveChanges();
-                return RedirectToAction("Details","Propietarios",new { id =mascota.propietario});
+
+                }
+                else
+                {
+                    var historia = new HistoriaClinica();
+                    historia.id = mascota.id;
+                    historia.fecha_creacion = DateTime.Now.Date;
+                    db.HistoriaClinicas.Add(historia);
+                   
+                    db.Mascotas.Add(mascota);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Propietarios", new { id = mascota.propietario });
+                }
+                
             }
 
             ViewBag.id = new SelectList(db.HistoriaClinicas, "id", "id", mascota.id);
-           // ViewBag.propietario = new SelectList(db.Propietarios, "cedula", "nombre", mascota.propietario);
-            ViewBag.raza = new SelectList(db.Razas.OrderBy(t => t.nombre), "id", "nombre");
+           
+           
             ViewBag.especie = new SelectList(db.Especies.OrderBy(t=> t.nombre), "id", "nombre");
+
+            ViewBag.raza = new SelectList(db.Razas.OrderBy(t => t.nombre).Where(tt=>tt.idEspecie==db.Especies.FirstOrDefault().id), "id", "nombre");
             return View(mascota);
         }
 
@@ -94,7 +103,7 @@ namespace Software2.Controllers
             }
             ViewBag.id = new SelectList(db.HistoriaClinicas, "id", "id", mascota.id);
             ViewBag.propietario = new SelectList(db.Propietarios, "cedula", "nombre", mascota.propietario);
-            ViewBag.especie = new SelectList(db.Razas, "id", "nombre", mascota.especie);
+            ViewBag.especie = new SelectList(db.Razas, "id", "nombre", mascota.raza);
             return View(mascota);
         }
 
@@ -113,7 +122,7 @@ namespace Software2.Controllers
             }
             ViewBag.id = new SelectList(db.HistoriaClinicas, "id", "id", mascota.id);
             ViewBag.propietario = new SelectList(db.Propietarios, "cedula", "nombre", mascota.propietario);
-            ViewBag.raza = new SelectList(db.Razas, "id", "nombre", mascota.especie);
+            ViewBag.raza = new SelectList(db.Razas, "id", "nombre", mascota.raza);
             return View(mascota);
         }
        
@@ -151,5 +160,13 @@ namespace Software2.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult GetRazas(int especieId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var razas = db.Razas.Where(m => m.idEspecie == especieId);
+            return Json(razas);
+        }
+    
     }
 }
