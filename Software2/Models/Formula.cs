@@ -10,14 +10,13 @@ namespace Software2.Models
     public class Formula
     {   
         [Key]
-        [Display(Name = "ID Formula")]
         public int formulaID { get; set; }
 
-        [Display(Name = "ID Mascota")]
-        [ForeignKey("Mascota")]
-        public string mascotaID { get; set; }
+        [Display(Name = "Historia médica")]
+        [ForeignKey("historia")]
+        public string historiaFK { get; set; }
 
-        public virtual Mascota Mascota { get; set; }
+        public  HistoriaClinica historia { get; set; }
 
         [Display(Name = "Fecha")]
         [DataType(DataType.Date)]
@@ -31,7 +30,7 @@ namespace Software2.Models
         [ForeignKey("veterinario")]
         public string veterinarioD { get; set; }
 
-        public virtual Veterinario veterinario { get; set; }
+        public  Veterinario veterinario { get; set; }
 
     }
 }

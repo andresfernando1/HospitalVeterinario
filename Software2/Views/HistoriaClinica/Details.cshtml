@@ -50,26 +50,26 @@
             <h3 class="text-center">Vacunación</h3>
             <a class="btn btn-default btn-xs" style="margin-left:10px" href="@Url.Action("Create","GestionVacunacions",new { id=Model.mascota.id})">Nueva vacunación</a>
 
-           
-                <table class="table table-bordered table-responsive">
 
-                    <tr>
-                        <td>Fecha</td>
-                        <td>Nombre</td>
-                        <td></td>
-                    </tr>
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Nombre</td>
+                    <td></td>
+                </tr>
 
 
-                    @foreach (var item in Model.mascota.gestionVacunacion)
+                @foreach (var item in Model.gestionVacunacion)
                 {
-                        <tr>
-                            <td>@item.fechaVacunacion.ToString("dd MMMM yyyy")</td>
-                            <td>@item.nombre</td>
-                            <td><button class="btn btn-info" onclick="location.href='@Url.Action("Details","GestionVacunacions",new { id=item.vacunaID})'">Más información</button></td>
-                        </tr>
-                    }
-                </table>
-            
+                    <tr>
+                        <td>@item.fechaVacunacion.ToString("dd MMMM yyyy")</td>
+                        <td>@item.nombre</td>
+                        <td><button class="btn btn-info" onclick="location.href='@Url.Action("Details","GestionVacunacions",new { id=item.vacunaID})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
         </div>
     </div>
     <div class="col-xs-6">
@@ -77,36 +77,32 @@
             <h3 class="text-center">Remisiones</h3>
             <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Nueva remisión</a>
 
-           
-            
-                <table class="table table-bordered table-responsive">
+            <table class="table table-bordered table-responsive">
 
-                    <tr>
-                        <td>Fecha</td>
-                        <td>Motivo</td>
-                        <td></td>
-                    </tr>
+                <tr>
+                    <td>Fecha</td>
+                    <td>Motivo</td>
+                    <td></td>
+                </tr>
 
-
-                    @foreach (var item in Model.mascota.remisiones)
+                @foreach (var item in Model.remisiones)
                 {
-                        <tr>
-                            <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
-                            <td>motivo</td>
-                            <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
-                        </tr>
-                    }
-                </table>
-            
+                    <tr>
+                        <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                        <td>motivo</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
         </div>
     </div>
-
     <div class="col-xs-12">
         <div class="seccion">
             <h3 class="text-center">Controles</h3>
             <a class="btn btn-default btn-xs" style="margin-left:10px" href="@Url.Action("Create","Control",new { id=Model.id})">Nuevo control</a>
 
-           
+
             <table class="table table-bordered table-responsive">
 
                 <tr>
@@ -114,7 +110,7 @@
                     <td>Diagnóstico final</td>
                     <td></td>
                 </tr>
-                
+
 
                 @foreach (var item in Model.controles)
                 {
@@ -125,13 +121,119 @@
                     </tr>
                 }
             </table>
-            
+
         </div>
 
     </div>
+    <hr />
+    <h2 class="text-center">Autorizaciones</h2>
 
 
+    <!-----------CIRUGIAS--------->
 
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Cirugías</h3>
+            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Auto_Cirugia",new { id =Model.id})">Nueva cirugía</a>
+
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Motivo</td>
+                    <td></td>
+                </tr>
+
+                @foreach (var item in Model.cirugia)
+                {
+                    <tr>
+                        <td>@item.fecha</td>
+                        <td>motivo</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.id})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Eutanasia</h3>
+            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Agregar eutanasia</a>
+
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Motivo</td>
+                    <td></td>
+                </tr>
+
+                @foreach (var item in Model.remisiones)
+                {
+                    <tr>
+                        <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                        <td>motivo</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Necropsia</h3>
+            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Agregar necropsia</a>
+
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Motivo</td>
+                    <td></td>
+                </tr>
+
+                @foreach (var item in Model.remisiones)
+                {
+                    <tr>
+                        <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                        <td>motivo</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="seccion">
+            <h3 class="text-center">Consentimiento informado</h3>
+            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Agregar</a>
+
+            <table class="table table-bordered table-responsive">
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>Motivo</td>
+                    <td></td>
+                </tr>
+
+                @foreach (var item in Model.remisiones)
+                {
+                    <tr>
+                        <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                        <td>motivo</td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
 </div>
 <p>
    

@@ -27,11 +27,11 @@ namespace Software2.Models
         [Display(Name = "Lote")]
         public double lote { get; set; }
 
-        [Display(Name = "ID Mascota")]
-        [ForeignKey("Mascota")]
-        public string mascotaID { get; set; }
+        [Display(Name = "Historia médica")]
+        [ForeignKey("historia")]
+        public string historiaFK { get; set; }
 
-        public virtual Mascota Mascota { get; set; }
+        public virtual HistoriaClinica historia  { get; set; }
 
     }
 }

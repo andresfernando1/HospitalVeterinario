@@ -218,6 +218,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Metodos.cs" />
+    <Compile Include="Migrations\201808142313521_InitialCreate.cs" />
+    <Compile Include="Migrations\201808142313521_InitialCreate.Designer.cs">
+      <DependentUpon>201808142313521_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808152255292_mg1.cs" />
+    <Compile Include="Migrations\201808152255292_mg1.Designer.cs">
+      <DependentUpon>201808152255292_mg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Autorizacion.cs" />
     <Compile Include="Models\Auto_Cirugia.cs" />
@@ -674,6 +683,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808142313521_InitialCreate.resx">
+      <DependentUpon>201808142313521_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808152255292_mg1.resx">
+      <DependentUpon>201808152255292_mg1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

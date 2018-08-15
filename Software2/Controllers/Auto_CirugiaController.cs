@@ -39,10 +39,14 @@ namespace Software2.Controllers
         }
 
         // GET: Auto_Cirugia/Create
-        public ActionResult Create()
+        public ActionResult Create(string historia)
         {
             ViewBag.historia = new SelectList(db.HistoriaClinicas, "id", "id");
-            return View();
+
+            Auto_Cirugia cirugia = new Auto_Cirugia();
+            cirugia.historia= historia;
+            cirugia.fecha = DateTime.Now;
+            return View(cirugia);
         }
 
         // POST: Auto_Cirugia/Create

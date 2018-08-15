@@ -23,7 +23,7 @@ namespace Software2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Mascota mascota = db.Mascotas.Find(id);
+            HistoriaClinica mascota = db.HistoriaClinicas.Find(id);
             ViewBag.mascota = mascota;
 
             if (mascota == null)
@@ -83,7 +83,7 @@ namespace Software2.Controllers
             {
                 db.GestionVacunacions.Add(gestionVacunacion);
                 db.SaveChanges();
-                return RedirectToAction("Index/"+gestionVacunacion.mascotaID);
+                return RedirectToAction("Index/"+gestionVacunacion.historiaFK);
             }
 
             ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre");

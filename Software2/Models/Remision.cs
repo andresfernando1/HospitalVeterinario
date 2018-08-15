@@ -19,17 +19,17 @@ namespace Software2.Models
         [Required(ErrorMessage = "Ingrese la fecha")]
         public DateTime fechaRemision { get; set; }
 
-        [Display(Name = "ID Mascota")]
-        [ForeignKey("Mascota")]
-        public string mascotaID { get; set; }
+        [Display(Name = "Historia clinica")]
+        [ForeignKey("historia")]
+        public string historiaFK { get; set; }
 
-        public virtual Mascota Mascota { get; set; }
+        public HistoriaClinica historia { get; set; }
 
         [Display(Name = "ID Practicante")]
         [ForeignKey("veterinario")]
         public string veterinarioID { get; set; }
 
-        public virtual Veterinario veterinario { get; set; }
+        public  Veterinario veterinario { get; set; }
 
         [Display(Name = "Region")]
         [Required(ErrorMessage = "Ingrese una region")]

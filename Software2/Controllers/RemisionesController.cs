@@ -23,7 +23,7 @@ namespace Software2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Mascota mascota = db.Mascotas.Find(id);
+            HistoriaClinica mascota = db.HistoriaClinicas.Find(id);
             ViewBag.mascota = mascota;
 
             if (mascota == null)
@@ -86,7 +86,7 @@ namespace Software2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.mascotaID);
+            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.historiaFK);
            ////** ViewBag.practicanteID = new SelectList(db.Mascotas, "id", "nombre", remision.practicanteID);
             return View(remision);
         }
@@ -103,7 +103,7 @@ namespace Software2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.mascotaID);
+            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.historiaFK);
           //////**  ViewBag.practicanteID = new SelectList(db.Mascotas, "id", "nombre", remision.practicanteID);
             return View(remision);
         }
@@ -121,7 +121,7 @@ namespace Software2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.mascotaID);
+            ViewBag.mascotaID = new SelectList(db.Mascotas, "id", "nombre", remision.historiaFK);
            //** ViewBag.practicanteID = new SelectList(db.Mascotas, "id", "nombre", remision.practicanteID);
             return View(remision);
         }
