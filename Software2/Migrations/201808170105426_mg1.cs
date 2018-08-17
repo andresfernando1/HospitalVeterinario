@@ -3,7 +3,7 @@ namespace Software2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class mg1 : DbMigration
     {
         public override void Up()
         {
@@ -43,6 +43,20 @@ namespace Software2.Migrations
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.Mascotas", t => t.id)
                 .Index(t => t.id);
+            
+            CreateTable(
+                "dbo.Auto_Consentimiento",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        valor = c.Double(nullable: false),
+                        interes = c.Double(nullable: false),
+                        fecha = c.DateTime(nullable: false),
+                        historia = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.HistoriaClinicas", t => t.historia)
+                .Index(t => t.historia);
             
             CreateTable(
                 "dbo.Controls",
@@ -103,36 +117,32 @@ namespace Software2.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.Mascotas",
+                "dbo.Auto_Eutanasia",
                 c => new
                     {
-                        id = c.String(nullable: false, maxLength: 128),
-                        nombre = c.String(nullable: false),
-                        fecha_nacimiento = c.DateTime(nullable: false),
-                        sexo = c.Int(nullable: false),
-                        color = c.Int(nullable: false),
-                        razaFK = c.Int(nullable: false),
-                        propietario = c.Long(nullable: false),
+                        id = c.Int(nullable: false, identity: true),
+                        causa = c.String(nullable: false),
+                        seccion = c.String(nullable: false),
+                        fecha = c.DateTime(nullable: false),
+                        historia = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.Propietarios", t => t.propietario, cascadeDelete: true)
-                .ForeignKey("dbo.Razas", t => t.razaFK, cascadeDelete: true)
-                .Index(t => t.razaFK)
-                .Index(t => t.propietario);
+                .ForeignKey("dbo.HistoriaClinicas", t => t.historia)
+                .Index(t => t.historia);
             
             CreateTable(
                 "dbo.Formulae",
                 c => new
                     {
                         formulaID = c.Int(nullable: false, identity: true),
-                        mascotaID = c.String(maxLength: 128),
+                        historiaFK = c.String(maxLength: 128),
                         fecha = c.DateTime(nullable: false),
                         veterinarioD = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.formulaID)
-                .ForeignKey("dbo.Mascotas", t => t.mascotaID)
+                .ForeignKey("dbo.HistoriaClinicas", t => t.historiaFK)
                 .ForeignKey("dbo.Veterinarios", t => t.veterinarioD)
-                .Index(t => t.mascotaID)
+                .Index(t => t.historiaFK)
                 .Index(t => t.veterinarioD);
             
             CreateTable(
@@ -161,11 +171,29 @@ namespace Software2.Migrations
                         fechaVacunacion = c.DateTime(nullable: false),
                         dosis = c.Double(nullable: false),
                         lote = c.Double(nullable: false),
-                        mascotaID = c.String(maxLength: 128),
+                        historiaFK = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.vacunaID)
-                .ForeignKey("dbo.Mascotas", t => t.mascotaID)
-                .Index(t => t.mascotaID);
+                .ForeignKey("dbo.HistoriaClinicas", t => t.historiaFK)
+                .Index(t => t.historiaFK);
+            
+            CreateTable(
+                "dbo.Mascotas",
+                c => new
+                    {
+                        id = c.String(nullable: false, maxLength: 128),
+                        nombre = c.String(nullable: false),
+                        fecha_nacimiento = c.DateTime(nullable: false),
+                        sexo = c.Int(nullable: false),
+                        color = c.Int(nullable: false),
+                        razaFK = c.Int(nullable: false),
+                        propietario = c.Long(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Propietarios", t => t.propietario, cascadeDelete: true)
+                .ForeignKey("dbo.Razas", t => t.razaFK, cascadeDelete: true)
+                .Index(t => t.razaFK)
+                .Index(t => t.propietario);
             
             CreateTable(
                 "dbo.Propietarios",
@@ -199,28 +227,6 @@ namespace Software2.Migrations
                         nombre = c.String(nullable: false, maxLength: 30),
                     })
                 .PrimaryKey(t => t.id);
-            
-            CreateTable(
-                "dbo.Remisions",
-                c => new
-                    {
-                        remisionID = c.Int(nullable: false, identity: true),
-                        fechaRemision = c.DateTime(nullable: false),
-                        mascotaID = c.String(maxLength: 128),
-                        veterinarioID = c.String(maxLength: 128),
-                        region = c.String(nullable: false),
-                        vista = c.String(nullable: false),
-                        diagnostico = c.String(nullable: false),
-                        ecografia = c.String(nullable: false),
-                        evaluacion = c.String(nullable: false),
-                        resultado = c.String(nullable: false),
-                        observacion = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.remisionID)
-                .ForeignKey("dbo.Mascotas", t => t.mascotaID)
-                .ForeignKey("dbo.Veterinarios", t => t.veterinarioID)
-                .Index(t => t.mascotaID)
-                .Index(t => t.veterinarioID);
             
             CreateTable(
                 "dbo.Monitoreos",
@@ -270,34 +276,6 @@ namespace Software2.Migrations
                 .Index(t => t.monitoreoFk);
             
             CreateTable(
-                "dbo.Auto_Consentimiento",
-                c => new
-                    {
-                        id = c.Int(nullable: false, identity: true),
-                        valor = c.Double(nullable: false),
-                        interes = c.Double(nullable: false),
-                        fecha = c.DateTime(nullable: false),
-                        historia = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.HistoriaClinicas", t => t.historia)
-                .Index(t => t.historia);
-            
-            CreateTable(
-                "dbo.Auto_Eutanasia",
-                c => new
-                    {
-                        id = c.Int(nullable: false, identity: true),
-                        causa = c.String(nullable: false),
-                        seccion = c.String(nullable: false),
-                        fecha = c.DateTime(nullable: false),
-                        historia = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.HistoriaClinicas", t => t.historia)
-                .Index(t => t.historia);
-            
-            CreateTable(
                 "dbo.Auto_Necropsia",
                 c => new
                     {
@@ -309,6 +287,28 @@ namespace Software2.Migrations
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.HistoriaClinicas", t => t.historia)
                 .Index(t => t.historia);
+            
+            CreateTable(
+                "dbo.Remisions",
+                c => new
+                    {
+                        remisionID = c.Int(nullable: false, identity: true),
+                        fechaRemision = c.DateTime(nullable: false),
+                        historiaFK = c.String(maxLength: 128),
+                        veterinarioID = c.String(maxLength: 128),
+                        region = c.String(nullable: false),
+                        vista = c.String(nullable: false),
+                        diagnostico = c.String(nullable: false),
+                        ecografia = c.String(nullable: false),
+                        evaluacion = c.String(nullable: false),
+                        resultado = c.String(nullable: false),
+                        observacion = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.remisionID)
+                .ForeignKey("dbo.HistoriaClinicas", t => t.historiaFK)
+                .ForeignKey("dbo.Veterinarios", t => t.veterinarioID)
+                .Index(t => t.historiaFK)
+                .Index(t => t.veterinarioID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -406,25 +406,25 @@ namespace Software2.Migrations
             DropForeignKey("dbo.SolicitudExamen", "veterinarioFK", "dbo.Veterinarios");
             DropForeignKey("dbo.SolicitudExamen", "mascota", "dbo.Mascotas");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Auto_Necropsia", "historia", "dbo.HistoriaClinicas");
-            DropForeignKey("dbo.Auto_Eutanasia", "historia", "dbo.HistoriaClinicas");
-            DropForeignKey("dbo.Auto_Consentimiento", "historia", "dbo.HistoriaClinicas");
             DropForeignKey("dbo.Auto_Cirugia", "historia", "dbo.HistoriaClinicas");
+            DropForeignKey("dbo.Remisions", "veterinarioID", "dbo.Veterinarios");
+            DropForeignKey("dbo.Remisions", "historiaFK", "dbo.HistoriaClinicas");
+            DropForeignKey("dbo.Auto_Necropsia", "historia", "dbo.HistoriaClinicas");
             DropForeignKey("dbo.PlanTerapeuticoes", "monitoreoFk", "dbo.Monitoreos");
             DropForeignKey("dbo.MonitoreoPacientes", "monitoreoFk", "dbo.Monitoreos");
             DropForeignKey("dbo.Monitoreos", "historia", "dbo.HistoriaClinicas");
             DropForeignKey("dbo.HistoriaClinicas", "id", "dbo.Mascotas");
-            DropForeignKey("dbo.Remisions", "veterinarioID", "dbo.Veterinarios");
-            DropForeignKey("dbo.Remisions", "mascotaID", "dbo.Mascotas");
             DropForeignKey("dbo.Mascotas", "razaFK", "dbo.Razas");
             DropForeignKey("dbo.Razas", "idEspecie", "dbo.Especies");
             DropForeignKey("dbo.Mascotas", "propietario", "dbo.Propietarios");
-            DropForeignKey("dbo.GestionVacunacions", "mascotaID", "dbo.Mascotas");
+            DropForeignKey("dbo.GestionVacunacions", "historiaFK", "dbo.HistoriaClinicas");
             DropForeignKey("dbo.Formulae", "veterinarioD", "dbo.Veterinarios");
             DropForeignKey("dbo.Medicamentoes", "Formula_formulaID", "dbo.Formulae");
-            DropForeignKey("dbo.Formulae", "mascotaID", "dbo.Mascotas");
+            DropForeignKey("dbo.Formulae", "historiaFK", "dbo.HistoriaClinicas");
+            DropForeignKey("dbo.Auto_Eutanasia", "historia", "dbo.HistoriaClinicas");
             DropForeignKey("dbo.Controls", "veterinarioFK", "dbo.Veterinarios");
             DropForeignKey("dbo.Controls", "historia", "dbo.HistoriaClinicas");
+            DropForeignKey("dbo.Auto_Consentimiento", "historia", "dbo.HistoriaClinicas");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -433,23 +433,23 @@ namespace Software2.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Remisions", new[] { "veterinarioID" });
+            DropIndex("dbo.Remisions", new[] { "historiaFK" });
             DropIndex("dbo.Auto_Necropsia", new[] { "historia" });
-            DropIndex("dbo.Auto_Eutanasia", new[] { "historia" });
-            DropIndex("dbo.Auto_Consentimiento", new[] { "historia" });
             DropIndex("dbo.PlanTerapeuticoes", new[] { "monitoreoFk" });
             DropIndex("dbo.MonitoreoPacientes", new[] { "monitoreoFk" });
             DropIndex("dbo.Monitoreos", new[] { "historia" });
-            DropIndex("dbo.Remisions", new[] { "veterinarioID" });
-            DropIndex("dbo.Remisions", new[] { "mascotaID" });
             DropIndex("dbo.Razas", new[] { "idEspecie" });
-            DropIndex("dbo.GestionVacunacions", new[] { "mascotaID" });
-            DropIndex("dbo.Medicamentoes", new[] { "Formula_formulaID" });
-            DropIndex("dbo.Formulae", new[] { "veterinarioD" });
-            DropIndex("dbo.Formulae", new[] { "mascotaID" });
             DropIndex("dbo.Mascotas", new[] { "propietario" });
             DropIndex("dbo.Mascotas", new[] { "razaFK" });
+            DropIndex("dbo.GestionVacunacions", new[] { "historiaFK" });
+            DropIndex("dbo.Medicamentoes", new[] { "Formula_formulaID" });
+            DropIndex("dbo.Formulae", new[] { "veterinarioD" });
+            DropIndex("dbo.Formulae", new[] { "historiaFK" });
+            DropIndex("dbo.Auto_Eutanasia", new[] { "historia" });
             DropIndex("dbo.Controls", new[] { "veterinarioFK" });
             DropIndex("dbo.Controls", new[] { "historia" });
+            DropIndex("dbo.Auto_Consentimiento", new[] { "historia" });
             DropIndex("dbo.HistoriaClinicas", new[] { "id" });
             DropIndex("dbo.Auto_Cirugia", new[] { "historia" });
             DropTable("dbo.AspNetUserLogins");
@@ -458,22 +458,22 @@ namespace Software2.Migrations
             DropTable("dbo.SolicitudExamen");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Remisions");
             DropTable("dbo.Auto_Necropsia");
-            DropTable("dbo.Auto_Eutanasia");
-            DropTable("dbo.Auto_Consentimiento");
             DropTable("dbo.PlanTerapeuticoes");
             DropTable("dbo.MonitoreoPacientes");
             DropTable("dbo.Monitoreos");
-            DropTable("dbo.Remisions");
             DropTable("dbo.Especies");
             DropTable("dbo.Razas");
             DropTable("dbo.Propietarios");
+            DropTable("dbo.Mascotas");
             DropTable("dbo.GestionVacunacions");
             DropTable("dbo.Medicamentoes");
             DropTable("dbo.Formulae");
-            DropTable("dbo.Mascotas");
+            DropTable("dbo.Auto_Eutanasia");
             DropTable("dbo.Veterinarios");
             DropTable("dbo.Controls");
+            DropTable("dbo.Auto_Consentimiento");
             DropTable("dbo.HistoriaClinicas");
             DropTable("dbo.Auto_Cirugia");
             DropTable("dbo.Administradors");

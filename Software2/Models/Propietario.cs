@@ -10,7 +10,8 @@ namespace Software2.Models //Carlos Mario Jaramillo
     public class Propietario
     {
         [Key]
-        [Display(Name ="Cedula")]
+        [Display(Name ="Cédula")]
+        [DataType(DataType.Text)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long cedula { get; set; }
 

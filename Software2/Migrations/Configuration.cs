@@ -10,7 +10,6 @@ namespace Software2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Software2.Models.ApplicationDbContext";
         }
 
         protected override void Seed(Software2.Models.ApplicationDbContext context)

@@ -16,10 +16,7 @@ namespace Software2.Models
         [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public string nombre { get; set; }
 
-        [Display(Name = "Fecha de nacimiento")]
-
-        string fecha = "01/02/1999";
-
+        [Display(Name = "Fecha nacimiento")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "El campo Fecha de nacimiento es obligatorio")]
         public DateTime fecha_nacimiento { get; set; }
