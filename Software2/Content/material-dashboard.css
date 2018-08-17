@@ -1196,7 +1196,7 @@ h2.title {
                 .open > .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle,
                 .open > .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:focus,
                 .open > .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:hover {
-                    background-color: #9c27b0;
+                    background-color: #2b9bad; 
                     color: #FFFFFF;
                 }
 
@@ -3021,7 +3021,7 @@ label {
             line-height: 1.07143;
             color: #424242;
             font-weight: 400;
-            margin: 16px 0 0 0;
+            margin: 0 0 0 0;
         }
 
     .form-group .help-block {

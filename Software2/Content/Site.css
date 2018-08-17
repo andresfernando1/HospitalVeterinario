@@ -3,6 +3,7 @@
    margin:0;
 }
 
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -33,4 +34,27 @@ background-color:rgb(249,249,249);
 .main-panel-offline{
     margin-top:20px;
     padding:30px;
+}
+
+.center_div {
+    margin: 0 auto;
+    width: 50% /* value of your choice which suits your alignment */
+}
+
+.outer-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.inner-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 15px;
+}
+
+.login-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
 }
