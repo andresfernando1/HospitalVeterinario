@@ -18,7 +18,7 @@
 
 
                 <td class="col-xs-8">
-                    <h3>@Html.DisplayFor(model => model.propietarioFK.nombre) @Html.DisplayFor(model => model.propietarioFK.apellido)</h3>
+                    <h3>@Html.DisplayFor(model => model.propietarioFK.nombreCompleto)</h3>
 
                     Cédula: @Html.DisplayFor(model => model.propietarioFK.cedula)
 
@@ -54,17 +54,19 @@
 
                     <br />
 
-                    Especie: @Html.DisplayFor(model => model.especie)
+                    Especie: @Html.DisplayFor(model => model.raza.especie.nombre)
+                    <br />
+                    Raza: @Html.DisplayFor(model => model.raza.nombre)
                     <br />
                     Color: @Html.DisplayFor(model => model.color)
                     <br />
-                    <a class="btn btn-info btn-sm btn-tumblr" href='@Url.Action("Details","HistoriaClinica", new { id=Model.id }) ' >
+                    <a class="btn btn-info btn-sm btn-tumblr" href='@Url.Action("Details","HistoriaClinica", new { id=Model.id }) '>
                         Historia clinica
                     </a>
                     <a class="btn btn-info btn-sm btn-tumblr" href='@Url.Action("Edit", new { id=Model.id }) ' data-toggle="tooltip" title="Editar mascota">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
-                  
+
                     <a class="btn  btn-sm btn-danger" href='@Url.Action("Delete",new { id=Model.id }) ' data-toggle="tooltip" title="Eliminar mascota">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>

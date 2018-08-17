@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Software2.Models;
+using Software2.Reportes;
 
 namespace Software2.Controllers
 {
@@ -133,6 +135,15 @@ namespace Software2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+       public ActionResult Report(Auto_Cirugia cirugia)
+        {
+           ReporteCirugia reporteCirugia = new ReporteCirugia();
+            Debug.WriteLine(db.Auto_Cirugia.First().observaciones);
+           byte[] abytes = reporteCirugia.PrepararReporte(db.Auto_Cirugia.First());
+           return File(abytes, "aplication/pdf");
+
         }
     }
 }
