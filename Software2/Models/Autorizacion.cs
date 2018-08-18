@@ -12,15 +12,16 @@ namespace Software2.Models
         [Key]
         public int id { get; set; }
 
+        [DataType(DataType.Date)]
+        [Display(Name ="Fecha")]
         public DateTime fecha { get; set; }
 
-
-        [Display(Name = "# Historia Clinica")]
+        
         [ForeignKey("historiaFK")]
         public string historia { get; set; }
 
-        public virtual HistoriaClinica historiaFK { get; set; }
-
-
+        public  HistoriaClinica historiaFK { get; set; }
+        
+        
     }
 }

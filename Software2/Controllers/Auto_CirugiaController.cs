@@ -41,13 +41,12 @@ namespace Software2.Controllers
         }
 
         // GET: Auto_Cirugia/Create
-        public ActionResult Create(string historia)
+        public ActionResult Create(string id)
         {
-            ViewBag.historia = new SelectList(db.HistoriaClinicas, "id", "id");
-
+            ViewBag.historia = id;
             Auto_Cirugia cirugia = new Auto_Cirugia();
-            cirugia.historia= historia;
-            cirugia.fecha = DateTime.Now;
+            cirugia.historia= id;
+            cirugia.fecha = DateTime.Now.Date;
             return View(cirugia);
         }
 
@@ -56,16 +55,24 @@ namespace Software2.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,observaciones,fecha,historia")] Auto_Cirugia auto_Cirugia)
+        public ActionResult Create(Auto_Cirugia auto_Cirugia)
         {
-            if (ModelState.IsValid)
+            if (auto_Cirugia.historia!=null && auto_Cirugia.historia != "")
             {
-                db.Auto_Cirugia.Add(auto_Cirugia);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (auto_Cirugia.fecha.Date < DateTime.Now.Date)
+                {
+                    ModelState.AddModelError("", "La fecha debe ser mayor o igual a la actual");
+                }
+                else
+                {
+                    db.Auto_Cirugia.Add(auto_Cirugia);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "HistoriaClinica", new { id = auto_Cirugia.historia });
+                }
+              
             }
 
-            ViewBag.historia = new SelectList(db.HistoriaClinicas, "id", "id", auto_Cirugia.historia);
+           
             return View(auto_Cirugia);
         }
 

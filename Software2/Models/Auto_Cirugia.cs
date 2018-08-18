@@ -10,6 +10,7 @@ namespace Software2.Models
     {
         [Display(Name = "Observaciones")]
         [Required(ErrorMessage = "El campo observaciones es obligatorio")]
+        [DataType(DataType.MultilineText)]
         public String observaciones { get; set; }
 
     }
