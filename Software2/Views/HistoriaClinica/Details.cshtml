@@ -161,10 +161,19 @@
         </div>
     </div>
 
+    <!-----------EUTANASIA--------->
+
+
     <div class="col-xs-6">
         <div class="seccion">
             <h3 class="text-center">Eutanasia</h3>
-            <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Remisiones",new { id =Model.id})">Agregar eutanasia</a>
+            @{
+                if (Model.eutanasia.Count == 0)
+                {
+                    <a class="btn btn-default btn-sm" style="margin-left:10px" href="@Url.Action("Create","Auto_Eutanasia",new { id =Model.id})">Agregar eutanasia</a>
+
+                }
+            }
 
             <table class="table table-bordered table-responsive">
 
@@ -174,12 +183,12 @@
                     <td></td>
                 </tr>
 
-                @foreach (var item in Model.remisiones)
+                @foreach (var item in Model.eutanasia)
                 {
                     <tr>
-                        <td>@item.fechaRemision.ToString("dd MMMM yyyy")</td>
+                        <td>@item.fecha.ToString("dd MMMM yyyy")</td>
                         <td>motivo</td>
-                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Remision",new { id=item.remisionID})'">Más información</button></td>
+                        <td><button class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Details","Auto_Eutanasia",new { id=item.id})'">Más información</button></td>
                     </tr>
                 }
             </table>
@@ -240,6 +249,6 @@
     </div>
 </div>
 <p>
-   
+
     @Html.ActionLink("Back to List", "Index")
 </p>

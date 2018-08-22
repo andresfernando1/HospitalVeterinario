@@ -38,9 +38,9 @@ namespace Software2.Controllers
         }
 
         // GET: Auto_Eutanasia/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
-            ViewBag.historia = new SelectList(db.HistoriaClinicas, "id", "id");
+            ViewBag.historia = id;
             return View();
         }
 
@@ -49,16 +49,24 @@ namespace Software2.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,causa,seccion,fecha,historia")] Auto_Eutanasia auto_Eutanasia)
+        public ActionResult Create(Auto_Eutanasia auto_Eutanasia)
         {
-            if (ModelState.IsValid)
+            if (auto_Eutanasia.historia != null && auto_Eutanasia.historia != "")
             {
-                db.Auto_Eutanasia.Add(auto_Eutanasia);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (auto_Eutanasia.fecha.Date < DateTime.Now.Date)
+                {
+                    ModelState.AddModelError("", "La fecha debe ser mayor o igual a la actual");
+                }
+                else
+                {
+                    db.Auto_Eutanasia.Add(auto_Eutanasia);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "HistoriaClinica", new { id = auto_Eutanasia.historia });
+                }
+
             }
 
-            ViewBag.historia = new SelectList(db.HistoriaClinicas, "id", "id", auto_Eutanasia.historia);
+
             return View(auto_Eutanasia);
         }
 
