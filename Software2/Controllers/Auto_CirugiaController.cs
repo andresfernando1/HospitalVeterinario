@@ -142,7 +142,7 @@ namespace Software2.Controllers
            ReporteCirugia reporteCirugia = new ReporteCirugia();
             Debug.WriteLine(db.Auto_Cirugia.First().observaciones);
            byte[] abytes = reporteCirugia.PrepararReporte(db.Auto_Cirugia.First());
-           return File(abytes, "aplication/pdf");
+           return File(abytes, "application/pdf");
 
         }
     }
