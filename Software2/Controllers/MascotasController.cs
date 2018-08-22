@@ -44,8 +44,11 @@ namespace Software2.Controllers
         {
 
             ViewBag.propietario = id;
-            ViewBag.especie = new SelectList(db.Especies, "id", "nombre");
-            ViewBag.razaFK = new SelectList(db.Razas, "id", "nombre");
+           
+            ViewBag.especie = new SelectList(db.Especies.OrderBy(t => t.nombre), "id", "nombre");
+            ViewBag.raza = new SelectList(db.Razas.OrderBy(t => t.nombre).Where(tt => tt.idEspecie == db.Especies.FirstOrDefault().id), "id", "nombre");
+
+
             return View();
         }
 
@@ -84,7 +87,6 @@ namespace Software2.Controllers
            
            
             ViewBag.especie = new SelectList(db.Especies.OrderBy(t=> t.nombre), "id", "nombre");
-
             ViewBag.raza = new SelectList(db.Razas.OrderBy(t => t.nombre).Where(tt=>tt.idEspecie==db.Especies.FirstOrDefault().id), "id", "nombre");
             return View(mascota);
         }
