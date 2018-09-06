@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201808170105426_mg1.Designer.cs">
       <DependentUpon>201808170105426_mg1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808282317086_mjgd.cs" />
+    <Compile Include="Migrations\201808282317086_mjgd.Designer.cs">
+      <DependentUpon>201808282317086_mjgd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Autorizacion.cs" />
@@ -685,6 +689,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808170105426_mg1.resx">
       <DependentUpon>201808170105426_mg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808282317086_mjgd.resx">
+      <DependentUpon>201808282317086_mjgd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
